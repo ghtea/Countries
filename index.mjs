@@ -10,6 +10,8 @@ class App extends Component {
         this.setState({ nicknames: nicknames.concat(`${randomName}`) });
         console.log(nicknames);
       }
+      
+      
       render({ version }, { nicknames = [] }) {
         return html`
           <div class="app">
