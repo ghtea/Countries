@@ -3,28 +3,49 @@
 import { html, Component, render } from 'https://ghtea.github.io/Countries/common/standalone.module.js';
 
 
+  const CountryName = ({ countryCode }) => html`<h1>${objCountryBasic[countryCode]['Country']}</h1>`;
 
 
-  const Test = ({ name }) => html`<h1>${name}</h1>`;
-
-
-  const TestSvg = () => html`
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="400" height="200">
+/*
+  const CountryFlag = () => html`
+  <svg width="400" height="100">
 
     <g class="bar">
-      <rect width="${objCountryPop['4']['2019']*1000/1000000*5}" height="19"></rect>
-      <text x="45" y="9.5" dy=".35em">4 ${objCountryBasic['4']['Country']}</text>
-      <text x="45" y="${9.5+19}" dy=".35em"> ${objCountryBasic['4']['Alpha2']}</text>
+      <rect width="${}" height="19"></rect>
+      <text x="45" y="30" dy=".35em"> ${objCountryBasic['4']['Country']}</text>
+      
     </g>
   </svg>
 `;
+*/
+const CountryFlag = ({ countryCode })=> html`  <img class="imgFlag" src=${"flagsPng/" + objCountryBasic[countryCode]['Alpha2'].toLowerCase()  + ".png"} />`;
 
-const TestFlag = () => html`  <img class="imgFlag" src="flagsPng/kr.png"/>`;
 
-    
-    
-   render(html`<${TestFlag}   />`, document.body);
-  
-   render(html`<${TestSvg}   />`, document.body);
-  
-  render(html`<${Test}  name="TestTest" />`, document.body);
+const CounyryPopChart = ({ countryCode })=> html`
+  <svg width="400" height="200"   class="chart">
+  <polyline
+     fill="none"
+     stroke="#0074d9"
+     stroke-width="2"
+     points="
+       0,${objCountryPop[countryCode]['1950']/400}
+       30,${objCountryPop[countryCode]['1960']/400}
+       60,${objCountryPop[countryCode]['1970']/400}
+       90,${objCountryPop[countryCode]['1980']/400}
+       120,${objCountryPop[countryCode]['1990']/400}
+       150,${objCountryPop[countryCode]['2000']/400}
+       180,${objCountryPop[countryCode]['2010']/400}
+       210,${objCountryPop[countryCode]['2020']/400}
+       "/>
+</svg>
+`;
+
+console.log(Math.round(objCountryPop['4']['2020']))
+
+const Country = ({countryCode}) => html`
+  <${CountryName} countryCode=${countryCode}/> 
+  <${CountryFlag} countryCode=${countryCode}/>
+  <${CounyryPopChart} countryCode=${countryCode}/>
+  `;
+
+render(html`<${Country}  countryCode="4" />`, document.body);
