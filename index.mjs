@@ -28,6 +28,7 @@ const CounyryPopChart = ({ countryCode })=> html`
      stroke="#0074d9"
      stroke-width="2"
      points="
+       0,0
        0,${objCountryPop[countryCode]['1950']/400}
        30,${objCountryPop[countryCode]['1960']/400}
        60,${objCountryPop[countryCode]['1970']/400}
