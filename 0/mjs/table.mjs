@@ -1,11 +1,12 @@
 import { html, Component, render, useState} from 'https://beforestorm.avantwing.com/0/common/standalone.module.js';
 
-
-let listIndex = Object.keys(objCountryCodes);
+/* 베이직테이블에 있는 국가들이 모두 gnp 데이터가 있지는 않다! */
+let listIndex = Object.keys(objGdp);
 
 
 function Country({cAlpha2, cAlpha3}) {
-
+   let listYear = ['1960', '1965', '1970', '1975', '1980', '1985', '1990', '1995', '2000', '2005', '2010', '2015','2018']
+   
 return html`
 
 <div class="divCountry">
@@ -15,7 +16,11 @@ return html`
 </div>
 
 <div class="divGraph">
-   ${cAlpha3}
+
+   ${listYear.map((cYear)=> html`
+   <div data-stage="${objGdpStage[cAlpha3][cYear]}">
+   </div>
+  `)}
 </div>
 
 </div>
@@ -34,14 +39,12 @@ return html`
 
 
 <div id="divContent">
-    
-${listIndex.map((cAlpha2, index)=> html`
-   <${Country} 
-      cAlpha2=${cAlpha2}
-      cAlpha3=${objCountryCodes[cAlpha2]['Alpha3']}
-       
+   ${listIndex.map((cAlpha3)=> html`
+   <${Country}
+      cAlpha3=${cAlpha3}
+      cAlpha2=${objAlpha3Codes[cAlpha3]['Alpha2']}
    />
-`)}
+  `)}
 </div>
 
 `;   

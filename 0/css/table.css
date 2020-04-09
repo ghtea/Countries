@@ -59,7 +59,7 @@ a {
 #divContent {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 }
 
@@ -110,3 +110,44 @@ a {
 }
 
 
+.divGraph {
+  display: flex;
+  font-size: 0.6rem;
+}
+
+.divGraph > div {
+  width: 20px;
+  height: 10px;
+}
+
+div[data-stage="None"]{
+  background-color: transparent;
+}
+div[data-stage="Bottom"]{
+  background-color: #000000;
+  margin-bottom: 0px;
+}
+div[data-stage="Very Low"]{
+  background-color: #222;
+  margin-bottom: 4px;
+}
+div[data-stage="Low"]{
+  background-color: #444;
+  margin-bottom: 8px;
+}
+div[data-stage="Middle"]{
+  background-color: #666;
+  margin-bottom: 12px;
+}
+div[data-stage="High"]{
+  background-color: #888;
+  margin-bottom: 16px;
+}
+div[data-stage="Very High"]{
+  background-color: light blue;
+  margin-bottom: 20x;
+}
+div[data-stage="Top"]{
+  background-color: blue;
+  margin-bottom: 24px;
+}
